@@ -522,7 +522,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create difficulty badge if difficulty is specified
     let difficultyBadge = "";
     if (details.difficulty) {
-      const difficultyClass = `difficulty-${details.difficulty.toLowerCase()}`;
+      // Validate difficulty value and create safe CSS class
+      const validDifficulties = {
+        'Beginner': 'difficulty-beginner',
+        'Intermediate': 'difficulty-intermediate',
+        'Advanced': 'difficulty-advanced'
+      };
+      const difficultyClass = validDifficulties[details.difficulty] || 'difficulty-beginner';
       difficultyBadge = `
         <div class="difficulty-badge ${difficultyClass}">
           ${details.difficulty}
