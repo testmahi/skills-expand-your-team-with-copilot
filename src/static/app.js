@@ -472,6 +472,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Function to generate share URLs for an activity
+  function generateShareUrls(name, description) {
+    const pageUrl = encodeURIComponent(window.location.href);
+    const shareText = encodeURIComponent(`Check out ${name} at Mergington High School: ${description}`);
+    const shareTitle = encodeURIComponent(name);
+    
+    return {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
+      twitter: `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`,
+      whatsapp: `https://wa.me/?text=${shareText}%20${pageUrl}`,
+      email: `mailto:?subject=${shareTitle}&body=${shareText}%20${pageUrl}`
+    };
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -498,6 +512,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Format the schedule using the new helper function
     const formattedSchedule = formatSchedule(details);
+
+    // Generate share URLs
+    const shareUrls = generateShareUrls(name, details.description);
 
     // Create activity tag
     const tagHtml = `
@@ -528,6 +545,21 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="tooltip-text">Regular meetings at this time throughout the semester</span>
       </p>
       ${capacityIndicator}
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <a href="${shareUrls.facebook}" target="_blank" rel="noopener noreferrer" class="share-btn facebook-btn" title="Share on Facebook">
+          <span class="share-icon">📘</span>
+        </a>
+        <a href="${shareUrls.twitter}" target="_blank" rel="noopener noreferrer" class="share-btn twitter-btn" title="Share on Twitter">
+          <span class="share-icon">🐦</span>
+        </a>
+        <a href="${shareUrls.whatsapp}" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp-btn" title="Share on WhatsApp">
+          <span class="share-icon">💬</span>
+        </a>
+        <a href="${shareUrls.email}" class="share-btn email-btn" title="Share via Email">
+          <span class="share-icon">✉️</span>
+        </a>
+      </div>
       <div class="participants-list">
         <h5>Current Participants:</h5>
         <ul>
