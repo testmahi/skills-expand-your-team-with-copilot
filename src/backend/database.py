@@ -165,7 +165,7 @@ initial_activities = {
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
     },
     "Manga Maniacs": {
-        "description": "Dive into epic adventures, epic battles, and heartwarming friendships! Discover amazing worlds from popular manga series and create your own stories inspired by Japanese storytelling.",
+        "description": "Dive into thrilling adventures, epic battles, and heartwarming friendships! Discover amazing worlds from popular manga series and create your own stories inspired by Japanese storytelling.",
         "schedule": "Tuesdays, 7:00 PM - 8:30 PM",
         "schedule_details": {
             "days": ["Tuesday"],
