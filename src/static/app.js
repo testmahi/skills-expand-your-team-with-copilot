@@ -475,7 +475,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to generate share URLs for an activity
   function generateShareUrls(name, description) {
     const pageUrl = encodeURIComponent(window.location.href);
-    const shareText = encodeURIComponent(`Check out ${name} at Mergington High School: ${description}`);
+    // Truncate description to keep share text concise (Twitter has 280 char limit)
+    const shortDesc = description.length > 100 ? description.substring(0, 97) + '...' : description;
+    const shareText = encodeURIComponent(`Check out ${name} at Mergington High School: ${shortDesc}`);
     const shareTitle = encodeURIComponent(name);
     
     return {
